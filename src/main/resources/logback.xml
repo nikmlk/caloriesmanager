@@ -2,8 +2,8 @@
 <configuration scan="true" scanPeriod="30 seconds">
 
     <appender name="file" class="ch.qos.logback.core.FileAppender">
-        <file>log/topjava.log</file>
-
+        <file>C:\Users\nikml\IdeaProjects\caloriesmanager\manager.log</file>
+        <append>true</append>
         <encoder>
             <charset>UTF-8</charset>
             <pattern>%date %-5level %logger{0} [%file:%line] %msg%n</pattern>
