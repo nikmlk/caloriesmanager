@@ -4,4 +4,7 @@
 
     <bean class="com.itstep.caloriesmanager.repository.mock.MockUserRepositoryImpl" id="mockUserRepository"/>
 
+    <bean class="com.itstep.caloriesmanager.service.UserServiceImpl">
+        <property name="repository" ref="mockUserRepository"/>
+    </bean>
 </beans>
