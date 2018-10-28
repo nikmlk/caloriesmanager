@@ -3,19 +3,19 @@ package com.itstep.caloriesmanager.service;
 import com.itstep.caloriesmanager.model.User;
 import com.itstep.caloriesmanager.repository.UserRepository;
 import com.itstep.caloriesmanager.util.exception.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static com.itstep.caloriesmanager.util.ValidationUtil.checkNotFound;
 import static com.itstep.caloriesmanager.util.ValidationUtil.checkNotFoundWithId;
 
+@Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private UserRepository repository;
-
-    public void setRepository(UserRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public User create(User user) {
