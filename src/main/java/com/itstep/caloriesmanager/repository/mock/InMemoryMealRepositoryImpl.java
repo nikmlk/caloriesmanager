@@ -1,6 +1,7 @@
-package com.itstep.caloriesmanager.repository;
+package com.itstep.caloriesmanager.repository.mock;
 
 import com.itstep.caloriesmanager.model.Meal;
+import com.itstep.caloriesmanager.repository.MealRepository;
 import com.itstep.caloriesmanager.util.MealsUtil;
 
 import java.util.Collection;

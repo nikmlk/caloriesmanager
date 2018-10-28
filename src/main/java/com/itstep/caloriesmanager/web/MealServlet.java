@@ -1,7 +1,7 @@
 package com.itstep.caloriesmanager.web;
 
 import com.itstep.caloriesmanager.model.Meal;
-import com.itstep.caloriesmanager.repository.InMemoryMealRepositoryImpl;
+import com.itstep.caloriesmanager.repository.mock.InMemoryMealRepositoryImpl;
 import com.itstep.caloriesmanager.repository.MealRepository;
 import com.itstep.caloriesmanager.util.MealsUtil;
 import org.slf4j.Logger;
