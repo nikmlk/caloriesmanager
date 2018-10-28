@@ -1,6 +1,6 @@
 package com.itstep.caloriesmanager.web;
 
-import static ru.javawebinar.topjava.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
+import static com.itstep.caloriesmanager.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
 public class SecurityUtil {
 
