@@ -17,7 +17,7 @@ import java.util.Collection;
 
 import static com.itstep.caloriesmanager.UserTestData.ADMIN;
 
-@ContextConfiguration("classpath:spring/spring-app.xml")
+@ContextConfiguration({"classpath:spring/spring-app.xml", "classpath:spring/inmemory.xml"})
 @RunWith(SpringRunner.class)
 public class InMemoryAdminRestControllerSpringTest {
 
