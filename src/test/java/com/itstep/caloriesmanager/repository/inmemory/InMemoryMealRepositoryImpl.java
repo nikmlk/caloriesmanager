@@ -1,4 +1,4 @@
-package com.itstep.caloriesmanager.repository.mock;
+package com.itstep.caloriesmanager.repository.inmemory;
 
 import com.itstep.caloriesmanager.model.Meal;
 import com.itstep.caloriesmanager.repository.MealRepository;
@@ -22,8 +22,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static com.itstep.caloriesmanager.repository.mock.InMemoryUserRepositoryImpl.ADMIN_ID;
-import static com.itstep.caloriesmanager.repository.mock.InMemoryUserRepositoryImpl.USER_ID;
+import static com.itstep.caloriesmanager.UserTestData.ADMIN_ID;
+import static com.itstep.caloriesmanager.UserTestData.USER_ID;
 
 @Repository
 public class InMemoryMealRepositoryImpl implements MealRepository {

@@ -1,5 +1,6 @@
-package com.itstep.caloriesmanager.repository.mock;
+package com.itstep.caloriesmanager.repository.inmemory;
 
+import com.itstep.caloriesmanager.UserTestData;
 import com.itstep.caloriesmanager.model.User;
 import com.itstep.caloriesmanager.repository.UserRepository;
 import org.springframework.stereotype.Repository;
@@ -11,14 +12,20 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import static com.itstep.caloriesmanager.UserTestData.ADMIN;
+import static com.itstep.caloriesmanager.UserTestData.USER;
+
 @Repository
 public class InMemoryUserRepositoryImpl implements UserRepository {
 
-    public static final int USER_ID = 1;
-    public static final int ADMIN_ID = 2;
-
     private Map<Integer, User> repository = new ConcurrentHashMap<>();
-    private AtomicInteger counter = new AtomicInteger(0);
+    private AtomicInteger counter = new AtomicInteger(100);
+
+    public void init() {
+        repository.clear();
+        repository.put(UserTestData.USER_ID, USER);
+        repository.put(UserTestData.ADMIN_ID, ADMIN);
+    }
 
     @Override
     public User save(User user) {
