@@ -4,9 +4,13 @@ import com.itstep.caloriesmanager.model.Meal;
 import com.itstep.caloriesmanager.repository.MealRepository;
 import com.itstep.caloriesmanager.util.MealsUtil;
 import com.itstep.caloriesmanager.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Collections;
@@ -23,6 +27,7 @@ import static com.itstep.caloriesmanager.repository.mock.InMemoryUserRepositoryI
 
 @Repository
 public class InMemoryMealRepositoryImpl implements MealRepository {
+    private static final Logger log = LoggerFactory.getLogger(InMemoryMealRepositoryImpl.class);
 
     // Map  userId -> (mealId-> meal)
     private Map<Integer, Map<Integer, Meal>> repository = new ConcurrentHashMap<>();
@@ -45,6 +50,16 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
             return meal;
         }
         return meals.computeIfPresent(meal.getId(), (id, oldMeal) -> meal);
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("+++ PostConstruct");
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        log.info("+++ PreDestroy");
     }
 
     @Override
