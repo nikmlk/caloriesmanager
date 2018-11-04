@@ -1,10 +1,12 @@
 package com.itstep.caloriesmanager.web;
 
+import com.itstep.caloriesmanager.model.AbstractBaseEntity;
+
 import static com.itstep.caloriesmanager.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
 public class SecurityUtil {
 
-    private static int id = 1;
+    private static int id = AbstractBaseEntity.START_SEQ;
 
     public static int authUserId() {
         return id;
