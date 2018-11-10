@@ -3,7 +3,6 @@ package com.itstep.caloriesmanager;
 import com.itstep.caloriesmanager.model.Meal;
 
 import java.time.Month;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.itstep.caloriesmanager.model.AbstractBaseEntity.START_SEQ;
@@ -34,7 +33,7 @@ public class MealTestData {
     }
 
     public static void assertMatch(Meal actual, Meal expected) {
-        assertThat(actual).isEqualToComparingFieldByField(expected);
+        assertThat(actual).isEqualToIgnoringGivenFields(expected, "user");
     }
 
     public static void assertMatch(Iterable<Meal> actual, Meal... expected) {
@@ -42,6 +41,7 @@ public class MealTestData {
     }
 
     public static void assertMatch(Iterable<Meal> actual, Iterable<Meal> expected) {
-        assertThat(actual).usingFieldByFieldElementComparator().isEqualTo(expected);
+        assertThat(actual).usingElementComparatorIgnoringFields("user").isEqualTo(expected);
     }
 }
+
