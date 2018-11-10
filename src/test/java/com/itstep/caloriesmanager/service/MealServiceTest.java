@@ -1,5 +1,6 @@
 package com.itstep.caloriesmanager.service;
 
+import com.itstep.caloriesmanager.Profiles;
 import com.itstep.caloriesmanager.model.Meal;
 import com.itstep.caloriesmanager.util.exception.NotFoundException;
 import org.junit.AfterClass;
@@ -12,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
@@ -33,6 +35,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 })
 @RunWith(SpringRunner.class)
 @Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
+@ActiveProfiles(Profiles.ACTIVE_DB)
 public class MealServiceTest {
     private static final Logger log = getLogger("result");
 
