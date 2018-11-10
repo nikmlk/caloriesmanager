@@ -4,6 +4,7 @@ import com.itstep.caloriesmanager.model.Role;
 import com.itstep.caloriesmanager.model.User;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static com.itstep.caloriesmanager.model.AbstractBaseEntity.START_SEQ;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,7 +21,7 @@ public class UserTestData {
     }
 
     public static void assertMatch(Iterable<User> actual, User... expected) {
-        assertMatch(actual, Arrays.asList(expected));
+        assertMatch(actual, List.of(expected));
     }
 
     public static void assertMatch(Iterable<User> actual, Iterable<User> expected) {
