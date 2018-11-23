@@ -18,6 +18,4 @@
 
     <context:component-scan base-package="com.itstep.caloriesmanager.**.service"/>
 
-    <context:component-scan base-package="com.itstep.caloriesmanager.**.web"/>
-
 </beans>
