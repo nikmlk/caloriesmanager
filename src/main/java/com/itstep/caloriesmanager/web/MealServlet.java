@@ -4,6 +4,8 @@ import com.itstep.caloriesmanager.Profiles;
 import com.itstep.caloriesmanager.model.Meal;
 import com.itstep.caloriesmanager.web.meal.MealRestController;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -22,24 +24,15 @@ import static com.itstep.caloriesmanager.util.DateTimeUtil.parseLocalTime;
 
 public class MealServlet extends HttpServlet {
 
-    private ClassPathXmlApplicationContext springContext;
     private MealRestController mealController;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        springContext = new ClassPathXmlApplicationContext(new String[]{"spring/spring-app.xml", "spring/spring-db.xml"}, false);
-//       springContext.setConfigLocations("spring/spring-app.xml", "spring/spring-db.xml");
-        springContext.getEnvironment().setActiveProfiles(Profiles.getActiveDbProfile(), Profiles.REPOSITORY_IMPLEMENTATION);
-        springContext.refresh();
+        WebApplicationContext springContext = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
         mealController = springContext.getBean(MealRestController.class);
     }
 
-    @Override
-    public void destroy() {
-        springContext.close();
-        super.destroy();
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
