@@ -1,6 +1,7 @@
 package com.itstep.caloriesmanager.service;
 
 import com.itstep.caloriesmanager.ActiveDbProfileResolver;
+import com.itstep.caloriesmanager.Profiles;
 import com.itstep.caloriesmanager.TimingRules;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -14,6 +15,8 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
@@ -39,6 +42,9 @@ abstract public class AbstractServiceTest {
     @Rule
     public Stopwatch stopwatch = TimingRules.STOPWATCH;
 
+    @Autowired
+    public Environment env;
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
@@ -46,6 +52,10 @@ abstract public class AbstractServiceTest {
     static {
         // needed only for java.util.logging (postgres driver)
         SLF4JBridgeHandler.install();
+    }
+    public boolean isJpaBased() {
+//        return Arrays.stream(env.getActiveProfiles()).noneMatch(Profiles.JDBC::equals);
+        return env.acceptsProfiles(org.springframework.core.env.Profiles.of(Profiles.JPA, Profiles.DATAJPA));
     }
 
     //  Check root cause in JUnit: https://github.com/junit-team/junit4/pull/778
