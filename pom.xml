@@ -16,6 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <spring.version>5.1.2.RELEASE</spring.version>
+        <jackson-json.version>2.9.7</jackson-json.version>
         <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>        <tomcat.version>9.0.12</tomcat.version>
 
         <!-- Logging -->
@@ -204,6 +205,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <!--JSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-json.version}</version>
         </dependency>
 
         <!--Test-->
