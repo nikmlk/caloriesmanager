@@ -2,12 +2,14 @@ package com.itstep.caloriesmanager;
 
 import com.itstep.caloriesmanager.model.Role;
 import com.itstep.caloriesmanager.model.User;
+import org.springframework.test.web.servlet.ResultMatcher;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static com.itstep.caloriesmanager.model.AbstractBaseEntity.START_SEQ;
+import static com.itstep.caloriesmanager.web.json.JsonUtil.writeIgnoreProps;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 public class UserTestData {
     public static final int USER_ID = START_SEQ;
@@ -26,6 +28,14 @@ public class UserTestData {
 
     public static void assertMatch(Iterable<User> actual, Iterable<User> expected) {
         assertThat(actual).usingElementComparatorIgnoringFields("registered", "meals").isEqualTo(expected);
+    }
+
+    public static ResultMatcher contentJson(User... expected) {
+        return content().json(writeIgnoreProps(List.of(expected), "registered"));
+    }
+
+    public static ResultMatcher contentJson(User expected) {
+        return content().json(writeIgnoreProps(expected, "registered"));
     }
 }
 
