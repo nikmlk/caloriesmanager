@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Users </h1>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-success" href="#" th:href="@{/users/create}"> Add User </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> id</th>
+                    <th> name</th>
+                    <th> email</th>
+                    <th> edit</th>
+                    <th> delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${users.empty}">
+                    <td colspan="2"> No Users Available</td>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td><span th:text="${user.id}"> id </span></td>
+                    <td><span th:text="${user.name}"> name </span></td>
+                    <td><span th:text="${user.email}"> email </span></td>
+                    <td><a class="btn btn-primary" href="#" th:href="@{|/users/edit/${user.id}|}"
+                           th:classappend="${users.empty} ? 'disabled' : ''"> Edit Users </a></td>
+                    <td><a class="btn btn-primary" href="#" th:href="@{|/users/delete/${user.id}|}"
+                           th:classappend="${users.empty} ? 'disabled' : ''"> Delete Users </a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
